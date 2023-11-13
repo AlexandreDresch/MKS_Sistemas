@@ -3,7 +3,11 @@ import Link from "next/link";
 
 export const Container = styled.div`
   display: flex;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
+  
   align-items: center;
   justify-content: space-between;
   padding: 28px 65px 28px 65px;
