@@ -11,14 +11,30 @@ import {
   NameValueContainer,
 } from "./styles";
 import Image from "next/image";
+import { useContext, useState } from "react";
+import { CartContext } from "@/util/cart";
 
 export default function ProductCard(product: Product) {
   const { name, photo, price, description } = product;
+  const [quantity, setQuantity] = useState(1);
+  const { addProductToCart } = useContext(CartContext);
+
+  function handleAddToCart() {
+    addProductToCart({ ...product, quantity: quantity });
+  }
+
   return (
     <Container>
       <InnerContainer>
         <ImageContainer>
-          <Image src={photo} alt={name} width={0} height={0} sizes="100vw" priority/>
+          <Image
+            src={photo}
+            alt={name}
+            width={0}
+            height={0}
+            sizes="100vw"
+            priority
+          />
         </ImageContainer>
 
         <NameValueContainer>
@@ -33,7 +49,7 @@ export default function ProductCard(product: Product) {
           <p>{description}</p>
         </DescriptionContainer>
       </InnerContainer>
-      <Button>
+      <Button onClick={handleAddToCart}>
         <Image
           src="./shopping-bag.svg"
           alt="Sacola de compras"
