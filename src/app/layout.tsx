@@ -5,6 +5,7 @@ import Provider from "@/util/Providers";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import CartProvider from "@/util/cart";
 
 export const metadata: Metadata = {
   title: "MKS Sistemas",
@@ -17,14 +18,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body>
         <StyledComponentsRegistry>
-          <Header />
-          <Provider>
-            {children}
+          <CartProvider>
+            <Header />
+            <Provider>
+              {children}
+            </Provider>
             <Footer />
-          </Provider>
+          </CartProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
