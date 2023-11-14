@@ -1,25 +1,45 @@
 "use client";
 
-import Image from "next/image";
+import { useQuery } from "@tanstack/react-query";
+
 import { Container, GridContainer } from "./styles";
+
 import ProductCard from "@/components/productCard";
+import Error from "@/components/error";
+import Loading from "@/components/loading";
+
 import { Product } from "@/types/product";
 
+import { getProductsData } from "@/lib/getProductsData";
+
 export default function Home() {
+  const { data, error, isLoading } = useQuery({
+    queryKey: ["products"],
+    queryFn: getProductsData,
+  });
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <Error />;
+  }
+
   return (
     <Container>
       <GridContainer>
-        {Array.from({ length: 8 }, (_, index) => index + 1).map((i) => (
+        {data.products.map((product: Product) => (
           <ProductCard
-            key={i}
-            id={8}
-            name="Headset Cloud Stinger"
-            brand="HyperX"
-            description="O HyperX Cloud Stinger™ é o headset ideal para jogadores que procuram leveza e conforto, qualidade de som superior e maior praticidade."
-            photo="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp"
-            price="600.00"
-            createdAt="2023-10-30T16:25:01.093Z"
-            updatedAt="2023-10-30T16:25:01.093Z"
+            key={product.id}
+            id={product.id}
+            name={product.name}
+            brand={product.brand}
+            description={product.description}
+            photo={product.photo}
+            price={product.price}
+            createdAt={product.createdAt}
+            updatedAt={product.updatedAt}
           />
         ))}
       </GridContainer>
