@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import StyledComponentsRegistry from "../lib/registry";
+import Provider from "@/util/Providers";
 
 import "./globals.css";
 import Header from "@/components/header";
@@ -20,8 +21,10 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <Header />
-          {children}
-          <Footer />
+          <Provider>
+            {children}
+            <Footer />
+          </Provider>
         </StyledComponentsRegistry>
       </body>
     </html>
