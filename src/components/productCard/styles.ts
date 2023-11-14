@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 218px;
   height: auto;
+  position: relative;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 2px 8px 0px #00000022;
@@ -10,14 +11,17 @@ export const Container = styled.div`
 
 export const InnerContainer = styled.div`
   display: flex;
+  min-height: 286px;
   flex-direction: column;
   gap: 8px;
   padding: 12px;
+  margin-bottom: 32px;
 `;
 
 export const ImageContainer = styled.div`
   width: 100%;
   height: max-content;
+  min-height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,6 +58,8 @@ export const BadgeContainer = styled.div`
   justify-content: center;
   border-radius: 5px;
   background-color: #373737;
+  padding-left: 40px;
+  padding-right: 40px;
 
   span {
     color: #fff;
@@ -75,6 +81,9 @@ export const DescriptionContainer = styled.div`
 
 export const Button = styled.button`
   display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 32px;
   align-items: center;

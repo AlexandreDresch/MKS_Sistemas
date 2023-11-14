@@ -18,7 +18,7 @@ export default function ProductCard(product: Product) {
     <Container>
       <InnerContainer>
         <ImageContainer>
-          <Image src={photo} alt={name} width={0} height={0} sizes="100vw" />
+          <Image src={photo} alt={name} width={0} height={0} sizes="100vw" priority/>
         </ImageContainer>
 
         <NameValueContainer>
