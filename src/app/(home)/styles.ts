@@ -6,6 +6,8 @@ export const Container = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
+  margin-bottom: 80px;
 `;
 
 export const GridContainer = styled.div`
@@ -15,4 +17,16 @@ export const GridContainer = styled.div`
   grid-column-gap: 22px;
   grid-row-gap: 30px;
   margin-top: 80px;  
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 502px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
